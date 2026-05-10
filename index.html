@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <title>Raagalaya Academy — Carnatic Vocal Music</title>
+    <meta name="description" content="Raagalaya Academy — a Carnatic vocal music school preserving the guru-shishya parampara, teaching students in-person and online." />
+    <meta name="author" content="Raagalaya Academy" />
+
+    <meta property="og:title" content="Raagalaya Academy" />
+    <meta property="og:description" content="Carnatic vocal music school — classes, events, and performances." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/og-image.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="/og-image.png" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <!--
+      Static placeholder Netlify can detect at build time. The real form
+      lives in src/pages/Contact.tsx; this skeleton just registers the
+      form name + fields with Netlify so submissions are accepted.
+      Hidden from users via the hidden attribute.
+    -->
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="phone" />
+      <input type="text" name="interest" />
+      <textarea name="message"></textarea>
+      <input type="text" name="bot-field" />
+    </form>
+
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

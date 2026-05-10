@@ -1,0 +1,40 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+dist-ssr
+
+# Generated gallery cache (regenerated from _originals/ by scripts/process-gallery.mjs)
+public/images/gallery
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Lovable scratch
+.lovable/
+
+# Local env
+.env
+.env.local
+*.local
+
+# Manual-deploy artifact
+raagalaya-deploy.zip

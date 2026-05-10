@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Carnatic Music School — design tokens
+   Palette: warm cream bg, deep indigo primary, muted saffron accent,
+   charcoal text, subtle gold flourishes. All HSL.
+*/
+@layer base {
+  :root {
+    --background: 38 40% 96%;          /* warm cream */
+    --foreground: 230 25% 14%;         /* deep ink */
+
+    --card: 38 40% 98%;
+    --card-foreground: 230 25% 14%;
+
+    --popover: 38 40% 98%;
+    --popover-foreground: 230 25% 14%;
+
+    --primary: 232 45% 22%;            /* deep indigo */
+    --primary-foreground: 38 40% 96%;
+
+    --secondary: 38 30% 90%;
+    --secondary-foreground: 232 45% 22%;
+
+    --muted: 38 25% 92%;
+    --muted-foreground: 230 12% 38%;
+
+    --accent: 28 75% 52%;              /* muted saffron */
+    --accent-foreground: 38 40% 98%;
+
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 38 20% 85%;
+    --input: 38 20% 85%;
+    --ring: 232 45% 22%;
+
+    --gold: 40 55% 55%;
+
+    --radius: 0.25rem;
+
+    --sidebar-background: 38 40% 96%;
+    --sidebar-foreground: 230 25% 14%;
+    --sidebar-primary: 232 45% 22%;
+    --sidebar-primary-foreground: 38 40% 96%;
+    --sidebar-accent: 38 30% 90%;
+    --sidebar-accent-foreground: 232 45% 22%;
+    --sidebar-border: 38 20% 85%;
+    --sidebar-ring: 232 45% 22%;
+  }
+
+  .dark {
+    --background: 230 25% 10%;
+    --foreground: 38 30% 92%;
+    --card: 230 25% 12%;
+    --card-foreground: 38 30% 92%;
+    --popover: 230 25% 12%;
+    --popover-foreground: 38 30% 92%;
+    --primary: 38 30% 92%;
+    --primary-foreground: 232 45% 22%;
+    --secondary: 230 20% 18%;
+    --secondary-foreground: 38 30% 92%;
+    --muted: 230 20% 18%;
+    --muted-foreground: 38 15% 70%;
+    --accent: 28 70% 55%;
+    --accent-foreground: 230 25% 10%;
+    --destructive: 0 60% 40%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 230 20% 22%;
+    --input: 230 20% 22%;
+    --ring: 38 30% 92%;
+    --gold: 40 55% 55%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif tracking-tight;
+    font-weight: 500;
+  }
+}
+
+@layer components {
+  .gold-divider {
+    @apply inline-block h-px w-16 align-middle;
+    background: linear-gradient(
+      to right,
+      transparent,
+      hsl(var(--gold)),
+      transparent
+    );
+  }
+  .eyebrow {
+    @apply text-xs uppercase tracking-[0.25em] text-muted-foreground;
+  }
+}

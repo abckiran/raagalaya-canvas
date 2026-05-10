@@ -1,0 +1,119 @@
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    create: 'Add {{collection}} "{{slug}}"'
+    update: 'Update {{collection}} "{{slug}}"'
+    delete: 'Delete {{collection}} "{{slug}}"'
+    uploadMedia: 'Upload "{{path}}"'
+    deleteMedia: 'Delete "{{path}}"'
+
+# Where new gallery photo uploads land in the repo (the pristine source).
+# The build script reads from here, watermarks, and writes to public/images/gallery.
+media_folder: "_originals/gallery"
+public_folder: "/images/gallery"
+
+# Show preview pane only where useful
+show_preview_links: false
+
+collections:
+  - name: events_upcoming
+    label: "Events — Upcoming"
+    label_singular: "Upcoming event"
+    folder: "content/events/upcoming"
+    create: true
+    extension: json
+    format: json
+    slug: "{{slug}}"
+    summary: "{{title}} · {{date}}"
+    editor:
+      preview: false
+    fields:
+      - { name: title, label: "Title", widget: string }
+      - { name: date, label: "Date (leave empty for TBD)", widget: datetime, required: false, date_format: "YYYY-MM-DD", time_format: false, picker_utc: true }
+      - { name: venue, label: "Venue", widget: string }
+      - { name: description, label: "Description", widget: text }
+      - { name: order, label: "Order on page (lower = higher)", widget: number, required: false, default: 1 }
+
+  - name: events_past
+    label: "Events — Past"
+    label_singular: "Past event"
+    folder: "content/events/past"
+    create: true
+    extension: json
+    format: json
+    slug: "{{year}}-{{month}}-{{slug}}"
+    summary: "{{title}} · {{date}}"
+    editor:
+      preview: false
+    fields:
+      - { name: title, label: "Title", widget: string }
+      - { name: date, label: "Date", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, picker_utc: true }
+      - { name: venue, label: "Venue", widget: string }
+      - { name: description, label: "Description", widget: text }
+
+  - name: videos_press
+    label: "Videos — Press (TV9 USA)"
+    label_singular: "Press video"
+    folder: "content/videos/press"
+    create: true
+    extension: json
+    format: json
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    editor:
+      preview: false
+    fields:
+      - { name: title, label: "Title", widget: string }
+      - { name: youtube_id, label: "YouTube Video ID", widget: string, hint: "The 11-character ID from the YouTube URL (the part after v=). For https://youtube.com/watch?v=ABC12345xyz, enter ABC12345xyz" }
+      - { name: order, label: "Order (lower = appears first)", widget: number, default: 1 }
+
+  - name: videos_mayoral
+    label: "Videos — Mayoral Awards"
+    label_singular: "Mayoral video"
+    folder: "content/videos/mayoral"
+    create: true
+    extension: json
+    format: json
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    editor:
+      preview: false
+    fields:
+      - { name: title, label: "Title", widget: string }
+      - { name: youtube_id, label: "YouTube Video ID", widget: string }
+      - { name: order, label: "Order", widget: number, default: 1 }
+
+  - name: videos_performances
+    label: "Videos — Performances"
+    label_singular: "Performance video"
+    folder: "content/videos/performances"
+    create: true
+    extension: json
+    format: json
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    editor:
+      preview: false
+    fields:
+      - { name: title, label: "Title", widget: string }
+      - { name: youtube_id, label: "YouTube Video ID", widget: string }
+      - { name: order, label: "Order", widget: number, default: 1 }
+
+  - name: gallery
+    label: "Gallery photos"
+    files:
+      - name: photos
+        label: "Gallery photo list"
+        file: "content/gallery.json"
+        editor:
+          preview: false
+        fields:
+          - name: photos
+            label: "Photos"
+            label_singular: "photo"
+            widget: list
+            summary: "{{fields.alt}}"
+            fields:
+              - { name: image, label: "Image", widget: image, hint: "Uploaded photos get the © Raagalaya Academy watermark automatically on the next site build." }
+              - { name: alt, label: "Caption / description", widget: string, hint: "Short description for accessibility (read by screen readers)." }

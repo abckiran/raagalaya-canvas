@@ -15,6 +15,13 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="/og-image.png" />
+
+    <!--
+      Netlify Identity widget — catches invite / password-reset / confirmation
+      tokens that arrive in the URL fragment, opens the right modal, and
+      redirects to /admin after a successful login.
+    -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
 
   <body>
@@ -36,5 +43,19 @@
     </form>
 
     <script type="module" src="/src/main.tsx"></script>
+
+    <script>
+      // After a successful sign-in (or first-time password set via invite),
+      // bounce the editor into /admin where Decap CMS lives.
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", function (user) {
+          if (!user) {
+            window.netlifyIdentity.on("login", function () {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
   </body>
 </html>

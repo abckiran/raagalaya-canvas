@@ -82,3 +82,4 @@ The contact form on `/contact` posts to Netlify Forms. Submissions appear in
 the Netlify dashboard (**Forms → contact**) and trigger an email notification
 to `raagalaya.academy@gmail.com`. Form detection is enabled at the project
 level; the static placeholder lives in `index.html` for build-time scanning.
+<!-- trigger-build -->
